@@ -33,6 +33,9 @@ switch (app.get('env')) {
     case 'production_heroku':
         mongoose.connect(process.env.BOOKSLIB_URI);
         break;
+    case 'openshift':
+        mongoose.connect('mongodb://bookuser:password@'+process.env.MONGODB_SERVICE_HOST+':'+process.env.MONGODB_SERVICE_PORT+'/BooksLib');
+        break;
     default:
         mongoose.connect('mongodb://localhost/BooksLib');
         break;
